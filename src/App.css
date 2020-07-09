@@ -124,11 +124,26 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* font-size: 50px; */
     font-weight: 700;
-    color: rgb(168, 164, 164);
+    /* color:red; */
+}
+.companyview-btn{
+    width: 5em;
+    margin:1em;
+    border-radius: 4em;
+    /* background-color: #4a69bd; */
+    background: linear-gradient(0deg, rgb(43, 16, 98) 0%, rgb(59, 54, 144) 0%, rgb(60, 49, 115) 0%, rgb(97, 55, 181) 50%, rgb(103, 95, 152) 100%, rgba(255, 255, 255, 0) 100%);
+    border: none;
+}
+.companydel-btn{
+    width: 5em;
+    margin:1em;
+    border-radius: 4em;
+    background: linear-gradient(0deg, rgb(98, 16, 16) 0%, rgb(144, 54, 54) 0%, rgb(115, 49, 49) 0%, rgb(181, 55, 55) 50%, rgb(154, 60, 60) 100%, rgba(255, 255, 255, 0) 100%);
+    border: none;
 }
 
 
