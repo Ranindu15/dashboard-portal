@@ -1,93 +1,119 @@
 import React from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Link, Switch, Route, BrowserRouter } from 'react-router-dom';
 import ucsc_logo from '../assets/images/ucsc_logo.jpeg'
 
 
 
-function Companies(){
+export default function Companies(){
     return (
         <div className="admin-content">
             <div className="companies">
-
-                <div class="card-deck" style={{color:'#bdc3c7', padding:'50px 10px'}}>
-                    <div class="card " style={{height:'5em', boxShadow:'5px 5px 2px #ffd32a'}}>
-                        <div class="card-body" style={{textAlign:'justify', color:'#1e272e'}}>
-                            <span class="material-icons">corporate_fare</span>
-                            <p class="card-text" style={{ fontSize:'20px'}}>Approved Companies&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{'12'}</p>
-                        </div>
+{/* ------------------------------------ tab start------------------------------------- */}
+                <BrowserRouter>
+                <div>
+                    <div>
+                        <button className="compnaytab"><Link style={{color:'black'}} to="/companies">Registered Companies</Link></button>
+                        <button className="compnaytab"><Link style={{color:'black'}} to="/pending">Pending to be Approved</Link></button>
+                        <button className="compnaytab"><Link style={{color:'black'}} to="/blacklisted">BlackListed Companies</Link></button>
                     </div>
-                    <div class="card " style={{height:'5em', boxShadow:'5px 5px 2px #05c46b'}}>
-                        <div class="card-body" style={{ color:'#1e272e'}}>
-                            <span class="material-icons">corporate_fare</span>
-                            <p class="card-text" style={{ fontSize:'20px'}}>Pending to Be Approved&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{'5'}</p>
-                        </div>
-                    </div>
-                    <div class="card " style={{ height:'5em', boxShadow:'5px 5px 2px #d63031'}}>
-                        <div class="card-body" style={{color:'#1e272e'}}>
-                            <span class="material-icons">corporate_fare</span>
-                            <p class="card-text" style={{ fontSize:'20px'}}>Blacklisted Companies&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{'2'}</p>
-                        </div>
-                    </div>
+                    <hr />
+                    <Switch>
+                        {/* <Route exact path="/approved"> <Registered /> </Route> */}
+                        <Route path="/pending"> <Pending /> </Route>
+                        <Route path="/blacklisted"><BlackListed/></Route>
+                    </Switch>
                 </div>
+                </BrowserRouter>
+{/* ------------------------------------ tab end------------------------------------- */}
 {/* ---------------------------------------------- search bar start---------------------------------------------------- */}
-                    <form class=" search-bar" action="action_page.php">
-                        <i class="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
+                    <form className=" search-bar" action="action_page.php">
+                        <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                         <input type="text" placeholder="Search.." name="search"></input>
                     </form>
 {/* -------------------------------------------------search bar end----------------------------------------------------- */}
+{/* ----------------------------------------- Alphebetical tabs start ---------------------------------------- */}
+<div className="container001">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="# " aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="# ">A</a></li>
+    <li class="page-item"><a class="page-link" href="# ">B</a></li>
+    <li class="page-item"><a class="page-link" href="# ">C</a></li>
+    <li class="page-item"><a class="page-link" href="# ">D</a></li>
+    <li class="page-item"><a class="page-link" href="# ">E</a></li>
+    <li class="page-item"><a class="page-link" href="# ">F</a></li>
+    <li class="page-item"><a class="page-link" href="# ">G</a></li>
+    <li class="page-item"><a class="page-link" href="# ">H</a></li>
+    <li class="page-item"><a class="page-link" href="# ">I</a></li>
+    <li class="page-item"><a class="page-link" href="# ">J</a></li>
+    <li class="page-item"><a class="page-link" href="# ">K</a></li>
+    <li class="page-item"><a class="page-link" href="# ">L</a></li>
+    <li class="page-item"><a class="page-link" href="# ">M</a></li>
+    <li class="page-item"><a class="page-link" href="# ">N</a></li>
+    <li class="page-item"><a class="page-link" href="# ">O</a></li>
+    <li class="page-item"><a class="page-link" href="# ">P</a></li>
+    <li class="page-item"><a class="page-link" href="# ">Q</a></li>
+    <li class="page-item"><a class="page-link" href="# ">R</a></li>
+    <li class="page-item"><a class="page-link" href="# ">S</a></li>
+    <li class="page-item"><a class="page-link" href="# ">T</a></li>
+    <li class="page-item"><a class="page-link" href="# ">u</a></li>
+    <li class="page-item"><a class="page-link" href="# ">V</a></li>
+    <li class="page-item"><a class="page-link" href="# ">W</a></li>
+    <li class="page-item"><a class="page-link" href="# ">X</a></li>
+    <li class="page-item"><a class="page-link" href="# ">Y</a></li>
+    <li class="page-item"><a class="page-link" href="# ">Z</a></li>
+    <li class="page-item">
+      <a class="page-link" href="# " aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
+{/* ----------------------------------------- Alphebetical tabs end ----------------------------------------------- */}
 {/* -------------------------------------------cards row colum start---------------------------------------- */}
-                <div class="container justify-content-around">
-                <div class="d-flex align-items-start flex-row">
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 1.5em'}}>
-                        <div class="card-body">
-                        {/* <img className="compnay-logo" src={ucsc_logo} alt="ucsc_logo"/> */}
-                            <h3 class="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
+                <div className="container justify-content-around">
+                <div className="d-flex align-items-start flex-row">
+                    <div className="card " style={{ height:'20rem',width:'24em', margin:'2.5em 1.5em'}}>
+                        <div className="card-body">
+                            <img className="sidebar-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                            <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
+                            <p className="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
+                            <button type="button" className="btn btn-secondary">Send Message</button>
                         </div>
                     </div>
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 9em'}}>
-                        <div class="card-body">
-                            <h3 class="card-title" style={{fontSize:'30px'}}>
-                            <span class="material-icons">corporate_fare</span>Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
+                    <div className="card " style={{ height:'20rem',width:'24em', margin:'2.5em 9em'}}>
+                        <div className="card-body">
+                            <h3 className="card-title" style={{fontSize:'30px'}}>
+                            <span className="material-icons">corporate_fare</span>Company Name</h3>
+                            <p className="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
+                            <button type="button" className="btn btn-secondary">Send Message</button>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex align-items-start flex-row">
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 1.5em'}}>
-                        <div class="card-body">
-                            <h3 class="card-title" style={{fontSize:'30px'}}>
-                            <span class="material-icons">corporate_fare</span>Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
+                <div className="d-flex align-items-start flex-row">
+                    <div className="card " style={{ height:'20rem',width:'24em', margin:'2.5em 1.5em'}}>
+                        <div className="card-body">
+                            <img className="sidebar-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                            <h3 className="card-title" style={{fontSize:'30px'}}>
+                            <span className="material-icons">corporate_fare</span> Company Name</h3>
+                            <p className="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
+                            <button type="button" className="btn btn-secondary">Send Message</button>
                         </div>
                     </div>
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 9em'}}>
-                        <div class="card-body">
-                            <h3 class="card-title" style={{fontSize:'30px'}}>
-                            <span class="material-icons">corporate_fare</span>Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
-                        </div>
-                    </div>
-                </div><div class="d-flex align-items-start flex-row">
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 1.5em'}}>
-                        <div class="card-body">
-                            <h3 class="card-title" style={{fontSize:'30px'}}>
-                            <span class="material-icons">corporate_fare</span> Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
-                        </div>
-                    </div>
-                    <div class="card " style={{ height:'20rem',width:'24em', margin:'2.5em 9em'}}>
-                        <div class="card-body">
-                            <h3 class="card-title" style={{fontSize:'30px'}}>
-                            <span class="material-icons">corporate_fare</span>Company Name</h3>
-                            <p class="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
-                            <button type="button" class="btn btn-secondary">Send Message</button>
+                    <div className="card " style={{ height:'20rem',width:'24em', margin:'2.5em 9em'}}>
+                        <div className="card-body">
+                            <h3 className="card-title" style={{fontSize:'30px'}}>
+                            <span className="material-icons">corporate_fare</span>Company Name</h3>
+                            <p className="card-text" style={{fontFamily:'sans-serif', fontSize:'23px'}}>25</p><hr/>
+                            <button type="button" className="btn btn-secondary">Send Message</button>
                         </div>
                     </div>
                 </div>
@@ -98,4 +124,26 @@ function Companies(){
     )
 }
 
-export default Companies;
+// export default Companies;
+
+// function Registered() {
+//     return (
+//       <div>
+//         <h2>Registered companies</h2>
+//       </div>
+//     );
+//   }
+  function Pending() {
+    return (
+      <div>
+        <h2>Pending to be</h2>
+      </div>
+    );
+  }
+  function BlackListed() {
+    return (
+      <div>
+        <h2>Black Listed compnaies</h2>
+      </div>
+    );
+  }
