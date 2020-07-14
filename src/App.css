@@ -124,11 +124,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* font-size: 50px; */
-    /* font-weight: 700; */
-    /* color:red; */
 }
 .companyview-btn{
     width: 6em;
@@ -149,8 +144,7 @@
     border: none;
 }
   
-  /* Style the search field */
-  form.search-bar input[type=text] {
+form.search-bar input[type=text] {
     padding: 10px;
     margin-left: 18em;
     font-size: 17px;
@@ -160,8 +154,7 @@
     border-radius: 5em;
   }
   
-  /* Clear floats */
-  form.search-bar::after {
+form.search-bar::after {
     content: "";
     clear: both;
     display: table;
@@ -174,6 +167,7 @@
   }
 
 .compnaytab {
+    /* position: fixed; */
   border: none;
   padding: 20px 32px;
   text-align: center;
@@ -184,6 +178,14 @@
   box-shadow: 0 8px 20px 0 rgba(0, 0, 2, 0.2), 0 6px 20px 0 rgba(0, 0, 5, 0.19);
   background-color: rgb(105, 158, 190);
   }
+
+.company-logo {
+    position: absolute;
+    height: 15em;
+    width: 10em;
+    margin: 20px 10px;
+}
+
 
 /*==================================================== students =================================================== */
 

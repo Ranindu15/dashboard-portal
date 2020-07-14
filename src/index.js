@@ -12,6 +12,8 @@ import Adverts from './views/adverts';
 import StudentCvs from './views/studentCvs';
 import Emailing from './views/emailing';
 import Notifications from './views/notifications';
+import Pending from './views/companies'
+import BlackListed from './views/companies'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,6 +26,8 @@ ReactDOM.render(
       <Route path="/cvs" component={StudentCvs} />
       <Route path="/emailing" component={Emailing} />
       <Route path="/notifications" component={Notifications} />
+      <Route path="/pending"> <Pending/></Route>
+      <Route path="/blacklisted"><BlackListed/></Route>
       <Redirect from="/" to="/admin/index" />
     </Switch>
   </BrowserRouter>,
