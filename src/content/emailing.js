@@ -6,10 +6,11 @@ function Emailling(){
     return (
         <div className="admin-content">
            <div className="emailing">
-               E mailing
-           </div>
+                
+            </div>
         </div>
     )
 }
 
 export default Emailling;
+

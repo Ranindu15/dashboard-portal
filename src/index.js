@@ -12,8 +12,12 @@ import Adverts from './views/adverts';
 import StudentCvs from './views/studentCvs';
 import Emailing from './views/emailing';
 import Notifications from './views/notifications';
+import Pending from './views/companies'
+import BlackListed from './views/companies'
+import Registered from './views/companies'
 
 ReactDOM.render(
+
   <React.StrictMode>
     <BrowserRouter>
     <Switch>
@@ -24,13 +28,15 @@ ReactDOM.render(
       <Route path="/cvs" component={StudentCvs} />
       <Route path="/emailing" component={Emailing} />
       <Route path="/notifications" component={Notifications} />
+      <Route path="/registered" component={Registered} />
+      <Route path="/pending"> <Pending/></Route>
+      <Route path="/blacklisted"><BlackListed/></Route>
       <Redirect from="/" to="/admin/index" />
     </Switch>
   </BrowserRouter>,
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
