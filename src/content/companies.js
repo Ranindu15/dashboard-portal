@@ -3,13 +3,13 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, Switch, Route, BrowserRouter } from 'react-router-dom';
 import ucsc_logo from '../assets/images/red.jpg'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Dropdown } from 'react-bootstrap';
+
 
 
 
 export default function Companies(){
     return (
-
       <BrowserRouter>
         <div className="admin-content">
           <div className="companies">
@@ -24,7 +24,7 @@ export default function Companies(){
                         <Route path="/pending"> <Pending/></Route>
                         <Route path="/blacklisted"><BlackListed/></Route>
                     </Switch>
-          <Registered/>
+          {/* <Registered/> */}
            </div>
         </div>
       </BrowserRouter>
@@ -96,7 +96,7 @@ function Registered() {
                       <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Person Name:&ensp;{ 'James anderson example'}</p>
-                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
+                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{'abc@gmail.com'}</p>
                       <div style={{position:'absolute'}}><hr/>
                         <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
                         <button type="button" className="btn btn-secondary" onClick={()=> setModalShow(true)}>View More...</button>
@@ -110,7 +110,7 @@ function Registered() {
                       <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Person Name:&ensp;{ 'James anderson example'}</p>
-                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
+                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{'abc@gmail.com'}</p>
                       <div style={{position:'absolute'}}><hr/>
                         <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
                         <button type="button" className="btn btn-secondary" onClick={()=> setModalShow(true)}>View More...</button>
@@ -125,7 +125,7 @@ function Registered() {
                       <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Person Name:&ensp;{ 'James anderson example'}</p>
-                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
+                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{'abc@gmail.com'}</p>
                       <div style={{position:'absolute'}}><hr/>
                         <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
                         <button type="button" className="btn btn-secondary">View More...</button>
@@ -138,7 +138,7 @@ function Registered() {
                       <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>Company Name</h3>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
                       <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Person Name:&ensp;{ 'James anderson example'}</p>
-                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{'0768023432'}</p>
+                      <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{'abc@gmail.com'}</p>
                       <div style={{position:'absolute'}}><hr/>
                         <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
                         <button type="button" className="btn btn-secondary">View More...</button>
@@ -159,28 +159,38 @@ function Registered() {
 
 
 function Profile(props){
+
   return(
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+      <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
+      <Modal.Header >
+        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">Company Name</Modal.Title>
+          <Dropdown >
+            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
       </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
+      <Modal.Body style={{paddingLeft:'12em'}}>
         <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+          <a href="# " >{'www.company.com'}</a>
+          <p>
           Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
           dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
           consectetur ac, vestibulum at eros.
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button >Send Message</Button>
+        <Button onClick={props.onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   )
