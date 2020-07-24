@@ -12,12 +12,14 @@ import Adverts from './views/adverts';
 import StudentCvs from './views/studentCvs';
 import Emailing from './views/emailing';
 import Notifications from './views/notifications';
-import Pending from './views/companies'
-import BlackListed from './views/companies'
-import Registered from './views/companies'
+// import Company from './content/companies';
+import RegisteredCompany from './content/RegisteredCompany';
+import PendingCompany from './content/PendingCompany';
+import BlackListedCompany from './content/BlackListedCompany';
 
 ReactDOM.render(
 
+  
   <React.StrictMode>
     <BrowserRouter>
     <Switch>
@@ -28,9 +30,9 @@ ReactDOM.render(
       <Route path="/cvs" component={StudentCvs} />
       <Route path="/emailing" component={Emailing} />
       <Route path="/notifications" component={Notifications} />
-      <Route path="/registered" component={Registered} />
-      <Route path="/pending"> <Pending/></Route>
-      <Route path="/blacklisted"><BlackListed/></Route>
+      <Route path="/registeredcom"  component={RegisteredCompany}/>
+      <Route path="/pendingcom"  component={PendingCompany}/>
+      <Route path="/blacklistedcom"  component={BlackListedCompany}/>
       <Redirect from="/" to="/admin/index" />
     </Switch>
   </BrowserRouter>,
