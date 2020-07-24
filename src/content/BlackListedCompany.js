@@ -8,7 +8,7 @@ import { Modal, Button, Dropdown } from 'react-bootstrap';
 import Navbar from '../components/navbar'
 import SideBar from '../components/sidebar'
 
-export default class Companies extends Component {
+export default class BlackListedCompany extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -16,47 +16,36 @@ export default class Companies extends Component {
             error: null,
             search_field:'',
             show: false,
-            hideDefault: false,
+            hideDefult: false,
             hideFilter: true,
             alphabet:'',
-
         }
     }
 
     async componentDidMount(){
-        try{
-            fetch('https://www.anapioficeandfire.com/api/books?pageSize=30').then((res) => res.json())
-            .then((data) => {
-                data.sort((a, b) => a.name.localeCompare(b.name))
-                this.setState({com_names: data });
-            });
-        }  catch(error){ 
-            this.setState({error: error});
-        }
+        this.setState({isLoding: true})
+        const resonse = await fetch('Http://localhost:5000/company/getAll')
+        const com_name = await resonse.json()
+        this.setState({com_names: com_name})
     }
-    handlePageClick = (e) => {
-        this.setState({alphabet: e.target.value, hideDefault: true, hideFilter:false});
-        // console.log(this.state.hideDefault, this.state.hideFilter);
-    }
-    // myCallback = (dataFromChild) => {
-    //     this.setState({ hide: dataFromChild });
-    // }
 
     searchFunc = (e) => {
         this.setState({search_field: e.target.value});
     }
-    
+    handlePageClick = (e) => {
+        this.setState({alphabet: e.target.value, hideDefult: true, hideFilter:false})
+    }
     render() {
         const {com_names ,alphabet, search_field} = this.state
         const filter_companie = com_names.filter(company => (
-            (company.name.toLowerCase().includes(search_field.toLowerCase()))
-            )); //name should replace comp_name
-        
-        const filter_compani = com_names.filter(company => (company.name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
+            company.comp_name.toLowerCase().includes(search_field.toLowerCase()) //name should replace comp_name
+        ))
+        const filter_compani = com_names.filter(company => (company.name.charAt(0).toLowerCase()=== alphabet.toLowerCase() )) 
         return (
             <div>
-                <Navbar/>
-                <SideBar/>
+            <Navbar/>
+            <SideBar/>
+            {/* <Content/> */}
             <div className="admin-content">
             <div className="companies">
                 <div>
@@ -68,7 +57,6 @@ export default class Companies extends Component {
                     <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                     <input type="text" onChange={this.searchFunc}  placeholder="Search.." name="search"></input>
                 </form>
-                
                 <div className="containerAlph">
                     <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -111,16 +99,15 @@ export default class Companies extends Component {
                     </ul>
                     </nav>
                 </div>
-                {/* <Alphabetical callbackFromParent={this.myCallback}/> */}
             
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideDefault}  key={index} className="container">
+                    <div hidden={this.state.hideDefult} key={index} className="container">
                         <div className="cards">
                             <div className="card" style={{margin: '5px 5px'}}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
-                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.name}</h3>
+                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
@@ -131,7 +118,7 @@ export default class Companies extends Component {
                                 </div>
                             </div>
                         </div>
-                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
                                         <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
@@ -169,7 +156,7 @@ export default class Companies extends Component {
                             <div className="card" style={{margin: '5px 5px'}}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
-                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.name}</h3>
+                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
@@ -180,7 +167,7 @@ export default class Companies extends Component {
                                 </div>
                             </div>
                         </div>
-                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
                                         <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
@@ -213,9 +200,7 @@ export default class Companies extends Component {
             })}
             </div>
             </div>
-            
             </div>
         )
     }
 }
-
